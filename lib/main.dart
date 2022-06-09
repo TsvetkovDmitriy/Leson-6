@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lesson_7/second_screen.dart';
+import 'package:lesson_7/UI/pages/first_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: SecondScreen(),
+      home: FirstScreen(),
     );
   }
 }
