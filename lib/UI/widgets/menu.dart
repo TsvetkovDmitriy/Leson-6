@@ -7,7 +7,7 @@ import 'package:lesson_7/UI/pages/third_page.dart';
 Widget buildMenu(BuildContext context, {width = 200}) {
   return Container(
     width: width,
-    color: Colors.redAccent,
+    color: Colors.deepOrange[200],
     child: Column(
       children: [
         SizedBox(

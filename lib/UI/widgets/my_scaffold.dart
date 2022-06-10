@@ -26,7 +26,7 @@ class MyScaffold extends StatelessWidget {
             Expanded(
                 flex: 3,
                 child: body),
-            buildMenu(context, width: width*0.2)
+            buildMenu(context, width: width*0.25)
           ],
         ),
       );
