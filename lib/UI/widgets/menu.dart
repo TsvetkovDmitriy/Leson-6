@@ -7,14 +7,14 @@ import 'package:lesson_7/UI/pages/third_page.dart';
 Widget buildMenu(BuildContext context, {width = 200}) {
   return Container(
     width: width,
-    color: Colors.deepOrange[200],
+    color: Colors.deepOrange[300],
     child: Column(
       children: [
         SizedBox(
-          height: 30,
+          height: 50,
         ),
         ListTile(
-          title: Text("Страница 1"),
+          title: Text("Страница 1", ),
           onTap: () {
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (BuildContext context) {

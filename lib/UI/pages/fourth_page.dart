@@ -18,7 +18,7 @@ class FourthPage extends StatelessWidget {
 
   buildBody(BuildContext context) {
     return Center(
-      child: Text(title),
+      child: Text("Да это пиздец какой-то!"),
     );
   }
 }

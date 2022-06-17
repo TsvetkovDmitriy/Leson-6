@@ -1,4 +1,4 @@
-import 'dart:html';
+// import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:lesson_7/UI/pages/third_page.dart';
 import 'package:lesson_7/UI/widgets/menu.dart';
@@ -17,10 +17,13 @@ class FirstScreen extends StatelessWidget {
   }
 
   buildBody(BuildContext context) {
-    return Column(children: [
-      NewsWidget(),
-      NewsWidget(),
-      NewsWidget(),
-    ],);
+    return SingleChildScrollView(
+      child: Column(children: [
+        NewsWidget(),
+        NewsWidget(),
+        NewsWidget(),
+        NewsWidget(),
+      ],),
+    );
   }
 }
