@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lesson_7/UI/pages/first_screen.dart';
 
+import 'UI/widgets/my_scaffold.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: FirstScreen(),
+      home: MyScaffold(),
     );
   }
 }

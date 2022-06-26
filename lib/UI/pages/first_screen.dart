@@ -6,24 +6,41 @@ import 'package:lesson_7/UI/widgets/my_scaffold.dart';
 import 'package:lesson_7/UI/widgets/news_widget.dart';
 
 class FirstScreen extends StatelessWidget {
-  static const String title = "Страница 1";
+  static const String title = "Тут все новости";
 
   @override
   Widget build(BuildContext context) {
-    return MyScaffold(
-      title: title,
-      body: buildBody(context),
-    );
-  }
-
-  buildBody(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(children: [
-        NewsWidget(),
-        NewsWidget(),
-        NewsWidget(),
-        NewsWidget(),
-      ],),
-    );
+    return ListView.builder(itemBuilder: (BuildContext context, int index) {
+      News newsEntry = News(
+          title: "Новость $index",
+          text: "Какой-то текст $index",
+          id: index.toString(),
+          photoURL: "https://w-dog.ru/wallpapers/5/17/293758380766135/kot-mejn-kun-ryzhij-pushistyj.jpg");
+      return NewsWidget(newsEntry);
+    },);
+  //     MyScaffold(
+  //     title: title,
+  //     body: buildBody(context),
+  //   );
+  // }
+  //
+  // buildBody(BuildContext context) {
+  //   return ListView.builder(itemBuilder: (BuildContext context, int index) {
+  //     News newsEntry = News(
+  //         title: "Новость $index",
+  //         text: "Какой-то текст $index",
+  //         id: index.toString(),
+  //         photoURL: "https://w-dog.ru/wallpapers/5/17/293758380766135/kot-mejn-kun-ryzhij-pushistyj.jpg");
+  //     return NewsWidget(newsEntry);
+  //   },);
+      
+    //   SingleChildScrollView(
+    //   child: Column(children: [
+    //     NewsWidget(),
+    //     NewsWidget(),
+    //     NewsWidget(),
+    //     NewsWidget(),
+    //   ],),
+    // );
   }
 }

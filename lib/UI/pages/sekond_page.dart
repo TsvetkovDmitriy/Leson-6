@@ -6,21 +6,24 @@ import 'package:lesson_7/UI/widgets/my_scaffold.dart';
 class SecondPage extends StatelessWidget {
   const SecondPage({Key? key}) : super(key: key);
 
-  static const String title = "Страница 2";
+  static const String title = "Карта событий";
 
   @override
   Widget build(BuildContext context) {
-    return MyScaffold(
-      title: title,
-      body: buildBody(context),
+    return Center(
+      child: Text('   Представь себе, что тут будет карта города с показанными на ней событиями в виде иконок'),
     );
+    //   MyScaffold(
+    //   title: title,
+    //   body: buildBody(context),
+    // );
   }
 
-  buildBody(BuildContext context) {
-    return Center(
-      child: Text(title),
-    );
-  }
+  // buildBody(BuildContext context) {
+  //   return Center(
+  //     child: Text(title),
+  //   );
+  // }
 
 }
 
