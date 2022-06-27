@@ -66,7 +66,6 @@ class _MyScaffoldState extends State<MyScaffold> {
     double width = MediaQuery.of(context).size.width;
     if (width > 420) {
       return Scaffold(
-        key: ,
         appBar: AppBar(title: Text(widget.title)),
         // body: Center(child: SingleChildScrollView(child: Text(myString,
         //   style: TextStyle(fontSize: 24),)),),
