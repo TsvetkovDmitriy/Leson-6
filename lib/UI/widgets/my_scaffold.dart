@@ -26,8 +26,9 @@ int selectedTab = 0;
 class MyScaffold extends StatefulWidget {
   final String title;
   // final Widget body;
+  final Widget? body;
 
-  const MyScaffold({Key? key, this.title = 'Заголовок', int selectedTab = 0})
+  const MyScaffold({Key? key, this.title = 'Заголовок', int? selectedTab = 0, this.body})
       : super(key: key);
 
   @override
@@ -37,10 +38,18 @@ class MyScaffold extends StatefulWidget {
 class _MyScaffoldState extends State<MyScaffold> {
 
   // int selectedTab = 0;
+  Widget? _body;
 
+  @override
+  void initState() {
+
+    _body = widget.body;
+    super.initState();
+  }
   void onSelectTab(int index) {
-    if (selectedTab == index) return;
+    // if (selectedTab == index) return;
     setState(() {
+      _body = null;
       selectedTab = index;
     });
   }
@@ -57,6 +66,7 @@ class _MyScaffoldState extends State<MyScaffold> {
     double width = MediaQuery.of(context).size.width;
     if (width > 420) {
       return Scaffold(
+        key: ,
         appBar: AppBar(title: Text(widget.title)),
         // body: Center(child: SingleChildScrollView(child: Text(myString,
         //   style: TextStyle(fontSize: 24),)),),
@@ -64,7 +74,7 @@ class _MyScaffoldState extends State<MyScaffold> {
         Row(
           children: [
             Expanded(child: _selectPage [selectedTab]),
-            buildMenu(context, width: width * 0.25),
+            buildMenu(context, onSelectTab, width: width * 0.25),
           ],
         )
         // _selectPage [selectedTab],
@@ -89,9 +99,10 @@ class _MyScaffoldState extends State<MyScaffold> {
           backgroundColor: AppColors.mainDarkBlue,
         ),
         drawerEdgeDragWidth: width * 0.7,
-        endDrawer: buildMenu(context, width: width * 0.7),
-        body:
-        _selectPage [selectedTab],
+        endDrawer: buildMenu(context, onSelectTab,  width: width * 0.7,),
+        body:  _body == null ?
+        // _body?? - второй вариант, двоеточие не нужно и что после него!
+        _selectPage [selectedTab] : _body,
         // widget.body,
         bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: Colors.grey,

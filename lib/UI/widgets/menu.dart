@@ -6,7 +6,7 @@ import 'package:lesson_7/UI/pages/sekond_page.dart';
 import 'package:lesson_7/UI/pages/third_page.dart';
 import 'package:lesson_7/UI/widgets/my_scaffold.dart';
 
-Widget buildMenu(BuildContext context, {width = 200}) {
+Widget buildMenu(BuildContext context, Function (int index) onListTileTab, {width = 200} ) {
   return Container(
     width: width,
     color: AppColors.mainDarkBlue4,
@@ -18,37 +18,25 @@ Widget buildMenu(BuildContext context, {width = 200}) {
         ListTile(
           title: Text("Новости"),
           onTap: () {
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (BuildContext context) {
-                  return MyScaffold(selectedTab: 0,);
-                }));
+                onListTileTab(0);
           },
         ),
         ListTile(
           title: Text("Карта"),
           onTap: () {
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (BuildContext context) {
-                  return MyScaffold(selectedTab: 1,);
-                }));
+            onListTileTab(1);
           },
         ),
         ListTile(
           title: Text("Друзья"),
           onTap: () {
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (BuildContext context) {
-                  return MyScaffold(selectedTab: 2,);
-                }));
+            onListTileTab(2);
           },
         ),
         ListTile(
           title: Text("Сообщения"),
           onTap: () {
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (BuildContext context) {
-                  return MyScaffold(selectedTab: 3,);
-                }));
+            onListTileTab(3);
           },
         ),
       ],

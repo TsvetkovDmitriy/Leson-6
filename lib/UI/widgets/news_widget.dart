@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lesson_7/UI/pages/sekond_page.dart';
+import 'package:lesson_7/UI/widgets/my_scaffold.dart';
 
 class NewsWidget extends StatelessWidget {
   final News newNews;
@@ -31,7 +32,7 @@ class NewsWidget extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (BuildContext context) {
-                return SecondPage();
+                return MyScaffold(body:  Text(newNews.text, ), title: newNews.title, );
               }));
             },
           ),
