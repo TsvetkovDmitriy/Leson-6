@@ -57,7 +57,25 @@ class News {
   }
 
   List <News> list1 = [
-    News(),
-    News(),
-    News()
+    News(
+        title: "Новость 1",
+        text: "Какой-то текст 1",
+        id: "1",
+        photoURL: "https://w-dog.ru/wallpapers/5/17/293758380766135/kot-mejn-kun-ryzhij-pushistyj.jpg"),
+
+    News(
+        title: "Новость 1",
+        text: "Какой-то текст 1",
+        id: "1",
+        photoURL: "https://w-dog.ru/wallpapers/5/17/293758380766135/kot-mejn-kun-ryzhij-pushistyj.jpg"),
+    News(
+        title: "Новость 1",
+        text: "Какой-то текст 1",
+        id: "1",
+        photoURL: "https://w-dog.ru/wallpapers/5/17/293758380766135/kot-mejn-kun-ryzhij-pushistyj.jpg"),
+    News(
+        title: "Новость 1",
+        text: "Какой-то текст 1",
+        id: "1",
+        photoURL: "https://w-dog.ru/wallpapers/5/17/293758380766135/kot-mejn-kun-ryzhij-pushistyj.jpg"),
 ];

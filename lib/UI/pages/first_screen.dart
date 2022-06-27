@@ -10,13 +10,10 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(itemBuilder: (BuildContext context, int index) {
-      News newsEntry = News(
-          title: "Новость $index",
-          text: "Какой-то текст $index",
-          id: index.toString(),
-          photoURL: "https://w-dog.ru/wallpapers/5/17/293758380766135/kot-mejn-kun-ryzhij-pushistyj.jpg");
-      return NewsWidget(newsEntry);
+    return ListView.builder( itemCount: list1.length,
+      itemBuilder: (BuildContext context, int index) {
+
+      return NewsWidget( list1[index]);
     },);
   //     MyScaffold(
   //     title: title,
