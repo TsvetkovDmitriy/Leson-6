@@ -20,14 +20,14 @@ import '../Theme/app_colors.dart';
 //
 //   }
 
-int selectedTab = 0;
+// int selectedTab = 0;
 
 
 class MyScaffold extends StatefulWidget {
   final String title;
   // final Widget body;
-
-  const MyScaffold({Key? key, this.title = 'Заголовок', int selectedTab = 0})
+  final int selectedTab;
+  const MyScaffold({Key? key, this.title = 'Заголовок', this.selectedTab = 0})
       : super(key: key);
 
   @override
@@ -35,13 +35,19 @@ class MyScaffold extends StatefulWidget {
 }
 
 class _MyScaffoldState extends State<MyScaffold> {
+ int _selectedTab = 0;
+  @override
+  void initState() {
+    _selectedTab = widget.selectedTab ;
 
-  // int selectedTab = 0;
+    super.initState();
+  }
+
 
   void onSelectTab(int index) {
-    if (selectedTab == index) return;
+    if (_selectedTab == index) return;
     setState(() {
-      selectedTab = index;
+      _selectedTab = index;
     });
   }
 
@@ -63,7 +69,7 @@ class _MyScaffoldState extends State<MyScaffold> {
         body:
         Row(
           children: [
-            Expanded(child: _selectPage [selectedTab]),
+            Expanded(child: _selectPage [_selectedTab]),
             buildMenu(context, width: width * 0.25),
           ],
         )
@@ -91,7 +97,7 @@ class _MyScaffoldState extends State<MyScaffold> {
         drawerEdgeDragWidth: width * 0.7,
         endDrawer: buildMenu(context, width: width * 0.7),
         body:
-        _selectPage [selectedTab],
+        _selectPage [_selectedTab],
         // widget.body,
         bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: Colors.grey,
@@ -118,7 +124,7 @@ class _MyScaffoldState extends State<MyScaffold> {
               backgroundColor: AppColors.mainDarkBlue4,
             ),
           ],
-          currentIndex: selectedTab,
+          currentIndex: _selectedTab,
           onTap: onSelectTab,
         ),
       );
