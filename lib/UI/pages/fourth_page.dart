@@ -10,8 +10,11 @@ class FourthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("   Сообщения и всякие переписки и личные новости"),
+    return Container(
+
+      child: Center(
+        child: Text("   Сообщения и всякие переписки и личные новости"),
+      ),
     );
     //   MyScaffold(
     //   title: title,

@@ -10,9 +10,12 @@ class SecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('   Представь себе, что тут будет карта города с показанными на ней событиями в виде иконок'),
-    );
+    return Center(child: Image.network('https://static.ngs.ru/news/52/preview/9fedf6ad1eb7d680ca99c61dd3088baa01e4e3b1_720_405_c.jpg'));
+    //   Container(
+    //   child: Center(
+    //     child: Text('   Представь себе, что тут будет карта города с показанными на ней событиями в виде иконок'),
+    //   ),
+    // );
     //   MyScaffold(
     //   title: title,
     //   body: buildBody(context),
