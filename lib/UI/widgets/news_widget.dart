@@ -48,7 +48,7 @@ class NewsWidget extends StatelessWidget {
     );
   }
 }
-
+//ч
 class News {
   String title = "Заголовок новости";
   String text = "Текст новости";
