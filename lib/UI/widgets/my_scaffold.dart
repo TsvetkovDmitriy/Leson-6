@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lesson_7/UI/pages/first_screen.dart';
 import 'package:lesson_7/UI/pages/fourth_page.dart';
+import 'package:lesson_7/UI/pages/login_page.dart';
 import 'package:lesson_7/UI/pages/sekond_page.dart';
 import 'package:lesson_7/UI/pages/third_page.dart';
 import 'package:lesson_7/UI/widgets/menu.dart';
@@ -22,13 +23,14 @@ import '../Theme/app_colors.dart';
 
 int selectedTab = 0;
 
-
 class MyScaffold extends StatefulWidget {
   final String title;
+
   // final Widget body;
   final Widget? body;
 
-  const MyScaffold({Key? key, this.title = 'Заголовок', int? selectedTab = 0, this.body})
+  const MyScaffold(
+      {Key? key, this.title = 'Заголовок', int? selectedTab = 0, this.body})
       : super(key: key);
 
   @override
@@ -36,16 +38,17 @@ class MyScaffold extends StatefulWidget {
 }
 
 class _MyScaffoldState extends State<MyScaffold> {
-
   // int selectedTab = 0;
   Widget? _body;
+  String? _title;
 
   @override
   void initState() {
-
+    _title = widget.title;
     _body = widget.body;
     super.initState();
   }
+
   void onSelectTab(int index) {
     // if (selectedTab == index) return;
     setState(() {
@@ -54,11 +57,18 @@ class _MyScaffoldState extends State<MyScaffold> {
     });
   }
 
-  List <Widget> _selectPage = <Widget> [
+  List<Widget> _selectPage = <Widget>[
     FirstScreen(),
     SecondPage(),
     ThirdPage(),
     FourthPage(),
+  ];
+
+  List<String> pagesTitles = [
+    "Новости",
+    "Карта",
+    "Друзья",
+    "Сообщений",
   ];
 
   @override
@@ -66,44 +76,70 @@ class _MyScaffoldState extends State<MyScaffold> {
     double width = MediaQuery.of(context).size.width;
     if (width > 420) {
       return Scaffold(
-        appBar: AppBar(title: Text(widget.title)),
-        // body: Center(child: SingleChildScrollView(child: Text(myString,
-        //   style: TextStyle(fontSize: 24),)),),
-        body:
-        Row(
-          children: [
-            Expanded(child: _selectPage [selectedTab]),
-            buildMenu(context, onSelectTab, width: width * 0.25),
-          ],
-        )
-        // _selectPage [selectedTab],
-        // Row(
-        //   children: [
-        //     Expanded(
-        //       flex: 2,
-        //       child: Text(
-        //         widget.title,
-        //         style: TextStyle(fontSize: 24),
-        //       ),
-        //     ),
-        //     // Expanded(flex: 3, child: widget.body),
-        //     buildMenu(context, width: width * 0.25)
-        //   ],
-        // ),
-      );
+          appBar: AppBar(
+            title: Text(pagesTitles[selectedTab]),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return const LoginPage();
+                    }));
+                  },
+                  icon: const Icon(Icons.login))
+            ],
+          ),
+          // body: Center(child: SingleChildScrollView(child: Text(myString,
+          //   style: TextStyle(fontSize: 24),)),),
+          body: Row(
+            children: [
+              Expanded(child: _selectPage[selectedTab]),
+              MenuWidget(onSelectTab, width: width * 0.25),
+            ],
+          )
+          // _selectPage [selectedTab],
+          // Row(
+          //   children: [
+          //     Expanded(
+          //       flex: 2,
+          //       child: Text(
+          //         widget.title,
+          //         style: TextStyle(fontSize: 24),
+          //       ),
+          //     ),
+          //     // Expanded(flex: 3, child: widget.body),
+          //     buildMenu(context, width: width * 0.25)
+          //   ],
+          // ),
+          );
     } else {
       return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
-          backgroundColor: AppColors.mainDarkBlue,
-        ),
+            title: Text(pagesTitles[selectedTab]),
+            backgroundColor: AppColors.mainDarkBlue,
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return const LoginPage();
+                    }));
+                  },
+                  icon: const Icon(Icons.login))
+            ]),
         drawerEdgeDragWidth: width * 0.7,
-        endDrawer: buildMenu(context, onSelectTab,  width: width * 0.7,),
-        body:  _body == null ?
-        // _body?? - второй вариант, двоеточие не нужно и что после него!
-        _selectPage [selectedTab] : _body,
+        endDrawer: MenuWidget(
+          onSelectTab,
+          width: width * 0.5,
+        ),
+        body: _body == null
+            ?
+            // _body?? - второй вариант, двоеточие не нужно и что после него!
+            _selectPage[selectedTab]
+            : _body,
         // widget.body,
         bottomNavigationBar: BottomNavigationBar(
+          showUnselectedLabels: true,
           unselectedItemColor: Colors.grey,
           selectedItemColor: Colors.white,
           items: [

@@ -10,10 +10,24 @@ class FourthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Center(
+      child: Container(
+        height: 70,
+        width: 288,
 
-      child: Center(
-        child: Text("   Сообщения и всякие переписки и личные новости"),
+        decoration: BoxDecoration(
+              border: Border.all(width: 1, color: Colors.grey),
+              borderRadius: BorderRadius.circular(10)),
+        child: Row(
+
+            children: [
+              IconButton(
+                  color: Colors.grey,
+                  iconSize: 40,
+                  onPressed: () {},
+                  icon: Icon(Icons.account_circle)),
+              Text ('Иванов Иван')]
+        ),
       ),
     );
     //   MyScaffold(
