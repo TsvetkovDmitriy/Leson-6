@@ -11,23 +11,41 @@ class FourthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        height: 70,
-        width: 288,
-
-        decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Colors.grey),
-              borderRadius: BorderRadius.circular(10)),
-        child: Row(
-
-            children: [
-              IconButton(
-                  color: Colors.grey,
-                  iconSize: 40,
-                  onPressed: () {},
-                  icon: Icon(Icons.account_circle)),
-              Text ('Иванов Иван')]
-        ),
+      child: Column(
+        children: [
+          Container(
+            height: 70,
+            width: 288,
+            decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10)),
+            child: Row(
+                children: [
+                  IconButton(
+                      color: Colors.grey,
+                      iconSize: 40,
+                      onPressed: () {},
+                      icon: Icon(Icons.account_circle)),
+                  Text ('Аркадий Райкин', style: TextStyle(fontSize: 16, ),)]
+            ),
+          ),
+          Container(
+            height: 70,
+            width: 288,
+            decoration: BoxDecoration(
+                border: Border.all(width: 1, color: Colors.grey),
+                borderRadius: BorderRadius.circular(10)),
+            child: Row(
+                children: [
+                  IconButton(
+                      color: Colors.grey,
+                      iconSize: 40,
+                      onPressed: () {},
+                      icon: Icon(Icons.account_circle)),
+                  Text ('Семен Слепаков', style: TextStyle(fontSize: 16, ),)]
+            ),
+          )
+        ],
       ),
     );
     //   MyScaffold(
