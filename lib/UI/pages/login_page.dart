@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool codeWasSended = false;
+  TextEditingController phonNumberController = TextEditingController ();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,8 @@ class _LoginPageState extends State<LoginPage> {
     return Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        TextFormField(decoration: InputDecoration(
+        TextFormField(controller: phonNumberController,
+            decoration: InputDecoration(
           label: Text(codeWasSended? 'Введите полученный код' : 'Введите номер телефона')
         )),
         ElevatedButton(onPressed: () {
