@@ -13,6 +13,33 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool codeWasSended = false;
   TextEditingController phonNumberController = TextEditingController ();
+  String? errorMessage;
+  String phoneNumber = '';
+
+  checkPhoneNumber () {
+    if (phonNumberController.text.length >12) {
+      errorMessage = 'Слишком длинный номер телефона';
+    }
+    else { if (phonNumberController.text.length <12) {
+      errorMessage = 'Слишком короткий номер телефона';
+    } else {
+      errorMessage = null;
+      codeWasSended = true;
+      phoneNumber = phonNumberController.text;
+      phonNumberController.text = '';
+    }
+    }
+  }
+
+  checkCode () {
+    if (phonNumberController.text.length != 12) {
+      errorMessage = 'Код должен быть из 6и символов';
+    }
+    else  {
+      errorMessage = null;
+      codeWasSended = true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +58,16 @@ class _LoginPageState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         TextFormField(controller: phonNumberController,
-            decoration: InputDecoration(
+            decoration: InputDecoration( errorText: errorMessage,
           label: Text(codeWasSended? 'Введите полученный код' : 'Введите номер телефона')
         )),
         ElevatedButton(onPressed: () {
+          if (codeWasSended) {
+            checkCode ();
+          } else {
+          checkPhoneNumber();}
           setState(() {
-            // codeWasSended = true;
-            codeWasSended = !codeWasSended;
+
           });
 
         }
